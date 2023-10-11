@@ -1,11 +1,11 @@
-package me.lemphis.springtemplate
+package me.lemphis.apartmentsalesstatistics
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SpringTemplateApplication
+class ApartmentSalesStatisticsApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringTemplateApplication>(*args)
+	runApplication<ApartmentSalesStatisticsApplication>(*args)
 }
