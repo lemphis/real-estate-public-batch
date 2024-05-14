@@ -1,11 +1,11 @@
-package me.lemphis.apartmentsalesstatistics
+package me.lemphis.realestatepublicbatch
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ApartmentSalesStatisticsApplication
+class DemoApplication
 
 fun main(args: Array<String>) {
-	runApplication<ApartmentSalesStatisticsApplication>(*args)
+	runApplication<DemoApplication>(*args)
 }

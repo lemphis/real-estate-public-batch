@@ -1,1 +1,1 @@
-rootProject.name = "apartment-sales-statistics"
+rootProject.name = "real-estate-public-batch"

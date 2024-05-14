@@ -1,10 +1,10 @@
-package me.lemphis.apartmentsalesstatistics
+package me.lemphis.realestatepublicbatch
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class ApartmentSalesStatisticsApplicationTests {
+class RealEstatePublicBatchApplicationTests {
 
 	@Test
 	fun contextLoads() {
