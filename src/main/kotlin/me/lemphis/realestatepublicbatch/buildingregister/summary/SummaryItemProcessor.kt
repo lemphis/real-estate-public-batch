@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class SummaryItemProcessor : ItemProcessor<SummaryFileSpec, Summary> {
 
-	override fun process(ap04FileSpec: SummaryFileSpec): Summary? {
-		return if (validateSummary(ap04FileSpec)) ap04FileSpec.toSummary() else null
+	override fun process(summaryFileSpec: SummaryFileSpec): Summary? {
+		return if (validateSummary(summaryFileSpec)) summaryFileSpec.toSummary() else null
 	}
 
 	private fun validateSummary(summaryFileSpec: SummaryFileSpec): Boolean {
