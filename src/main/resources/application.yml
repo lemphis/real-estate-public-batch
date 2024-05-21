@@ -11,4 +11,4 @@ spring:
       auto-commit: false
   batch:
     job:
-      name: summaryLoadJob
+      name: ${job.name:NONE}
