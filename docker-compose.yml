@@ -14,3 +14,6 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
       - --skip-log-bin
+      - --innodb_buffer_pool_size=2G
+      - --key_buffer_size=0
+      - --innodb_lock_wait_timeout=5
