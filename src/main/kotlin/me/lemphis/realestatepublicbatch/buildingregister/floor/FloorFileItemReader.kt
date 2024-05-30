@@ -13,7 +13,7 @@ class FloorFileItemReader {
 		.name("floorFlatFileItemReader")
 		.encoding("EUC-KR")
 		.targetType(FloorFileSpec::class.java)
-		.resource(FileSystemResource("/Users/jaeho/buildingregister/floor_202403.txt"))
+		.resource(FileSystemResource("/var/buildingregister/floor.txt"))
 		.delimited().delimiter("|").names(
 			"관리건축물대장PK",
 			"대지위치",

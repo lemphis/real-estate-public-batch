@@ -13,7 +13,7 @@ class AreaFileItemReader {
 		.name("areaFlatFileItemReader")
 		.encoding("EUC-KR")
 		.targetType(AreaFileSpec::class.java)
-		.resource(FileSystemResource("/Users/jaeho/buildingregister/area_202403.txt"))
+		.resource(FileSystemResource("/var/buildingregister/area.txt"))
 		.delimited().delimiter("|").names(
 			"관리건축물대장PK",
 			"대장구분코드",

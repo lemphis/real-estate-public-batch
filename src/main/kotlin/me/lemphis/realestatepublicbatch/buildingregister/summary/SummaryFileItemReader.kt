@@ -3,7 +3,7 @@ package me.lemphis.realestatepublicbatch.buildingregister.summary
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.FileSystemResource
 
 @Configuration
 class SummaryFileItemReader {
@@ -13,7 +13,7 @@ class SummaryFileItemReader {
 		.name("summaryFlatFileItemReader")
 		.encoding("EUC-KR")
 		.targetType(SummaryFileSpec::class.java)
-		.resource(ClassPathResource("summary_202403.txt"))
+		.resource(FileSystemResource("/var/buildingregister/summary.txt"))
 		.delimited().delimiter("|").names(
 			"관리건축물대장PK",
 			"관리상위건축물대장PK",

@@ -3,7 +3,7 @@ package me.lemphis.realestatepublicbatch.buildingregister.building
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.ClassPathResource
+import org.springframework.core.io.FileSystemResource
 
 @Configuration
 class BuildingFileItemReader {
@@ -13,7 +13,7 @@ class BuildingFileItemReader {
 		.name("buildingFlatFileItemReader")
 		.encoding("EUC-KR")
 		.targetType(BuildingFileSpec::class.java)
-		.resource(ClassPathResource("building_202403.txt"))
+		.resource(FileSystemResource("/var/buildingregister/building.txt"))
 		.delimited().delimiter("|").names(
 			"관리건축물대장PK",
 			"대장구분코드",

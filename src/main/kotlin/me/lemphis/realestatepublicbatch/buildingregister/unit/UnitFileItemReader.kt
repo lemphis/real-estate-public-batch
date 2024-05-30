@@ -13,7 +13,7 @@ class UnitFileItemReader {
 		.name("unitFlatFileItemReader")
 		.encoding("EUC-KR")
 		.targetType(UnitFileSpec::class.java)
-		.resource(FileSystemResource("/Users/jaeho/buildingregister/unit_202403.txt"))
+		.resource(FileSystemResource("/var/buildingregister/unit.txt"))
 		.delimited().delimiter("|").names(
 			"관리건축물대장PK",
 			"대장구분코드",
