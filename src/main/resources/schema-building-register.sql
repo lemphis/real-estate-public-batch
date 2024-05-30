@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS service.building;
 DROP TABLE IF EXISTS service.unit;
 DROP TABLE IF EXISTS service.area;
 DROP TABLE IF EXISTS service.floor;
+DROP TABLE IF EXISTS service.sub_land;
 
 CREATE TABLE service.summary
 (
@@ -314,3 +315,44 @@ CREATE TABLE service.floor
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 층별개요';
+
+CREATE TABLE service.sub_land
+(
+    `id`        BIGINT      NOT NULL AUTO_INCREMENT COMMENT 'PK',
+    `관리건축물대장PK` VARCHAR(33) NOT NULL COMMENT '관리건축물대장PK [VARCHAR(33)]',
+    `대장구분코드`    VARCHAR(1)   DEFAULT NULL COMMENT '대장구분코드 [VARCHAR(1)]',
+    `대장구분코드명`   VARCHAR(100) DEFAULT NULL COMMENT '대장구분코드명 [VARCHAR(100)]',
+    `대장종류코드`    VARCHAR(1)   DEFAULT NULL COMMENT '대장종류코드 [VARCHAR(1)]',
+    `대장종류코드명`   VARCHAR(100) DEFAULT NULL COMMENT '대장종류코드명 [VARCHAR(100)]',
+    `대지위치`      VARCHAR(500) DEFAULT NULL COMMENT '대지위치 [VARCHAR(500)]',
+    `도로명대지위치`   VARCHAR(400) DEFAULT NULL COMMENT '도로명대지위치 [VARCHAR(400)]',
+    `건물명`       VARCHAR(100) DEFAULT NULL COMMENT '건물명 [VARCHAR(100)]',
+    `시군구코드`     VARCHAR(5)   DEFAULT NULL COMMENT '시군구코드 [VARCHAR(5)]',
+    `법정동코드`     VARCHAR(5)   DEFAULT NULL COMMENT '법정동코드 [VARCHAR(5)]',
+    `대지구분코드`    VARCHAR(1)   DEFAULT NULL COMMENT '대지구분코드 [VARCHAR(1)]',
+    `번`         VARCHAR(4)   DEFAULT NULL COMMENT '번 [VARCHAR(4)]',
+    `지`         VARCHAR(4)   DEFAULT NULL COMMENT '지 [VARCHAR(4)]',
+    `특수지명`      VARCHAR(200) DEFAULT NULL COMMENT '특수지명 [VARCHAR(200)]',
+    `블록`        VARCHAR(20)  DEFAULT NULL COMMENT '블록 [VARCHAR(20)]',
+    `로트`        VARCHAR(20)  DEFAULT NULL COMMENT '로트 [VARCHAR(20)]',
+    `새주소도로코드`   VARCHAR(12)  DEFAULT NULL COMMENT '새주소도로코드 [VARCHAR(12)]',
+    `새주소법정동코드`  VARCHAR(5)   DEFAULT NULL COMMENT '새주소법정동코드 [VARCHAR(5)]',
+    `새주소지상지하코드` VARCHAR(1)   DEFAULT NULL COMMENT '새주소지상지하코드 [VARCHAR(1)]',
+    `새주소본번`     INTEGER      DEFAULT NULL COMMENT '새주소본번 [NUMERIC(5)]',
+    `새주소부번`     INTEGER      DEFAULT NULL COMMENT '새주소부번 [NUMERIC(5)]',
+    `부속대장구분코드`  CHAR(1)      DEFAULT NULL COMMENT '부속대장구분코드 [CHAR(1)]',
+    `부속대장구분코드명` VARCHAR(100) DEFAULT NULL COMMENT '부속대장구분코드명 [VARCHAR(100)]',
+    `부속시군구코드`   VARCHAR(5)   DEFAULT NULL COMMENT '부속시군구코드 [VARCHAR(5)]',
+    `부속법정동코드`   VARCHAR(5)   DEFAULT NULL COMMENT '부속법정동코드 [VARCHAR(5)]',
+    `부속대지구분코드`  CHAR(1)      DEFAULT NULL COMMENT '부속대지구분코드 [CHAR(1)]',
+    `부속번`       VARCHAR(4)   DEFAULT NULL COMMENT '부속번 [VARCHAR(4)]',
+    `부속지`       VARCHAR(4)   DEFAULT NULL COMMENT '부속지 [VARCHAR(4)]',
+    `부속특수지명`    VARCHAR(200) DEFAULT NULL COMMENT '부속특수지명 [VARCHAR(200)]',
+    `부속블록`      VARCHAR(20)  DEFAULT NULL COMMENT '부속블록 [VARCHAR(20)]',
+    `부속로트`      VARCHAR(20)  DEFAULT NULL COMMENT '부속로트 [VARCHAR(20)]',
+    `부속기타지번명`   VARCHAR(300) DEFAULT NULL COMMENT '부속기타지번명 [VARCHAR(300)]',
+    `생성일자`      VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
+    PRIMARY KEY (`id`),
+    INDEX (`관리건축물대장PK`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 부속지번';
