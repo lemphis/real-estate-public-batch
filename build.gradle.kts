@@ -18,11 +18,14 @@ repositories {
 	mavenCentral()
 }
 
+val mysqlVersion = "8.0.33"
+val shapefileVersion = "31.0"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-batch")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("mysql:mysql-connector-java:8.0.33")
-	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3")
+	implementation("mysql:mysql-connector-java:$mysqlVersion")
+	implementation("org.geotools:gt-shapefile:$shapefileVersion")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
