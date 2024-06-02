@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS service.unit;
 DROP TABLE IF EXISTS service.area;
 DROP TABLE IF EXISTS service.floor;
 DROP TABLE IF EXISTS service.sub_land;
+DROP TABLE IF EXISTS service.land_regulation;
 
 CREATE TABLE service.summary
 (
@@ -356,3 +357,29 @@ CREATE TABLE service.sub_land
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 부속지번';
+
+CREATE TABLE service.land_regulation
+(
+    `id`          BIGINT      NOT NULL AUTO_INCREMENT COMMENT 'PK',
+    `관리건축물대장PK`   VARCHAR(33) NOT NULL COMMENT '관리건축물대장PK [VARCHAR(33)]',
+    `대지위치`        VARCHAR(500) DEFAULT NULL COMMENT '대지위치 [VARCHAR(500)]',
+    `도로명대지위치`     VARCHAR(400) DEFAULT NULL COMMENT '도로명대지위치 [VARCHAR(400)]',
+    `시군구코드`       VARCHAR(5)   DEFAULT NULL COMMENT '시군구코드 [VARCHAR(5)]',
+    `법정동코드`       VARCHAR(5)   DEFAULT NULL COMMENT '법정동코드 [VARCHAR(5)]',
+    `대지구분코드`      VARCHAR(1)   DEFAULT NULL COMMENT '대지구분코드 [VARCHAR(1)]',
+    `번`           VARCHAR(4)   DEFAULT NULL COMMENT '번 [VARCHAR(4)]',
+    `지`           VARCHAR(4)   DEFAULT NULL COMMENT '지 [VARCHAR(4)]',
+    `특수지명`        VARCHAR(200) DEFAULT NULL COMMENT '특수지명 [VARCHAR(200)]',
+    `블록`          VARCHAR(20)  DEFAULT NULL COMMENT '블록 [VARCHAR(20)]',
+    `로트`          VARCHAR(20)  DEFAULT NULL COMMENT '로트 [VARCHAR(20)]',
+    `지역지구구역구분코드`  VARCHAR(1)   DEFAULT NULL COMMENT '지역지구구역구분코드 [VARCHAR(1)]',
+    `지역지구구역구분코드명` VARCHAR(100) DEFAULT NULL COMMENT '지역지구구역구분코드명 [VARCHAR(100)]',
+    `지역지구구역코드`    VARCHAR(6)   DEFAULT NULL COMMENT '지역지구구역코드 [VARCHAR(6)]',
+    `지역지구구역코드명`   VARCHAR(100) DEFAULT NULL COMMENT '지역지구구역코드명 [VARCHAR(100)]',
+    `대표여부`        VARCHAR(1)   DEFAULT NULL COMMENT '대표여부 [VARCHAR(1)]',
+    `기타지역지구구역`    VARCHAR(300) DEFAULT NULL COMMENT '기타지역지구구역 [VARCHAR(300)]',
+    `생성일자`        VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
+    PRIMARY KEY (`id`),
+    INDEX (`관리건축물대장PK`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 지역지구구역';
