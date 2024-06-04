@@ -15,11 +15,12 @@ java {
 }
 
 repositories {
+	maven("https://repo.osgeo.org/repository/release/")
 	mavenCentral()
 }
 
 val mysqlVersion = "8.0.33"
-val shapefileVersion = "31.0"
+val shapefileVersion = "31.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-batch")
