@@ -42,7 +42,7 @@ CREATE TABLE service.summary
     `생성일자`        VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 기본개요';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 기본개요';
 
 CREATE TABLE service.complex
 (
@@ -112,7 +112,7 @@ CREATE TABLE service.complex
     `생성일자`       VARCHAR(8)     DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 총괄표제부';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 총괄표제부';
 
 CREATE TABLE service.building
 (
@@ -195,7 +195,7 @@ CREATE TABLE service.building
     `내진능력`       VARCHAR(200)   DEFAULT NULL COMMENT '내진능력 [VARCHAR(200)]',
     PRIMARY KEY (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 표제부';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 표제부';
 
 CREATE TABLE service.unit
 (
@@ -228,7 +228,7 @@ CREATE TABLE service.unit
     `생성일자`      VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 전유부';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 전유부';
 
 CREATE TABLE service.area
 (
@@ -275,7 +275,7 @@ CREATE TABLE service.area
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 전유공용면적';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 전유공용면적';
 
 CREATE TABLE service.floor
 (
@@ -316,7 +316,7 @@ CREATE TABLE service.floor
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 층별개요';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 층별개요';
 
 CREATE TABLE service.sub_land
 (
@@ -357,7 +357,7 @@ CREATE TABLE service.sub_land
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 부속지번';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 부속지번';
 
 CREATE TABLE service.land_regulation
 (
@@ -383,7 +383,7 @@ CREATE TABLE service.land_regulation
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 지역지구구역';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 지역지구구역';
 
 CREATE TABLE service.house_price
 (
@@ -416,4 +416,4 @@ CREATE TABLE service.house_price
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb3 COMMENT ='건축물대장 주택가격';
+  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 주택가격';
