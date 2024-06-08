@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.floor
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class FloorItemProcessor : ItemProcessor<FloorFileSpec, Floor> {
 
 	override fun process(floorFileSpec: FloorFileSpec): Floor? {

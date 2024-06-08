@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.area
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class AreaItemProcessor : ItemProcessor<AreaFileSpec, Area> {
 
 	override fun process(areaFileSpec: AreaFileSpec): Area? {

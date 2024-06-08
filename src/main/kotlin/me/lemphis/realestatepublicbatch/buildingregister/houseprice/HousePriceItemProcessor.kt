@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.houseprice
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class HousePriceItemProcessor : ItemProcessor<HousePriceFileSpec, HousePrice> {
 
 	override fun process(housePriceFileSpec: HousePriceFileSpec): HousePrice? {

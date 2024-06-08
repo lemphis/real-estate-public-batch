@@ -2,10 +2,10 @@ package me.lemphis.realestatepublicbatch.buildingregister.floor
 
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder
 import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 import javax.sql.DataSource
 
-@Configuration
+@Component
 class FloorItemWriter(
 	private val dataSource: DataSource,
 ) {

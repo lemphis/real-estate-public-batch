@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.subland
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class SubLandItemProcessor : ItemProcessor<SubLandFileSpec, SubLand> {
 
 	override fun process(subLandFileSpec: SubLandFileSpec): SubLand? {

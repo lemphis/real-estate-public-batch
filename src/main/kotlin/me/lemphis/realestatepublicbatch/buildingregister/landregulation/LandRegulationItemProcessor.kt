@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.landregulation
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class LandRegulationItemProcessor : ItemProcessor<LandRegulationFileSpec, LandRegulation> {
 
 	override fun process(landRegulationFileSpec: LandRegulationFileSpec): LandRegulation? {

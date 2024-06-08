@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.complex
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class ComplexItemProcessor : ItemProcessor<ComplexFileSpec, Complex> {
 
 	override fun process(complexFileSpec: ComplexFileSpec): Complex? {

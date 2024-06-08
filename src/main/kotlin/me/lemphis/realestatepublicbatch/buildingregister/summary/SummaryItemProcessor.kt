@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.summary
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class SummaryItemProcessor : ItemProcessor<SummaryFileSpec, Summary> {
 
 	override fun process(summaryFileSpec: SummaryFileSpec): Summary? {

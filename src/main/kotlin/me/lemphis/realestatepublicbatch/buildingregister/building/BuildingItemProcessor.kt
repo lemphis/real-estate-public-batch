@@ -1,9 +1,9 @@
 package me.lemphis.realestatepublicbatch.buildingregister.building
 
 import org.springframework.batch.item.ItemProcessor
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class BuildingItemProcessor : ItemProcessor<BuildingFileSpec, Building> {
 
 	override fun process(buildingFileSpec: BuildingFileSpec): Building? {
