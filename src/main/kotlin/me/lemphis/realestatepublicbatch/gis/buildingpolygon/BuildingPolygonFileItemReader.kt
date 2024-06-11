@@ -21,7 +21,7 @@ class BuildingPolygonFileItemReader {
 	@Bean
 	fun buildingPolygonMultiFileItemReader() = MultiResourceItemReaderBuilder<BuildingPolygonFileSpec>()
 		.name("buildingPolygonMultiFileItemReader")
-		.resources(*PathMatchingResourcePatternResolver().getResources("file:/var/gis/buildingpolygon/*.shp"))
+		.resources(*PathMatchingResourcePatternResolver().getResources("file:/var/gis/buildingpolygon/**/*.shp"))
 		.delegate(buildingPolygonFileItemReaderDelegate())
 		.build()
 

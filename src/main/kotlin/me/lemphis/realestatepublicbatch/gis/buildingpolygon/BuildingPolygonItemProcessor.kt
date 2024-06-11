@@ -11,9 +11,11 @@ class BuildingPolygonItemProcessor : ItemProcessor<BuildingPolygonFileSpec, Buil
 	}
 
 	private fun validateBuildingPolygon(buildingPolygonFileSpec: BuildingPolygonFileSpec): Boolean {
-		return buildingPolygonFileSpec.GIS건물통합식별번호.length == 28
+		return buildingPolygonFileSpec.GIS건물통합식별번호 != null
+			&& buildingPolygonFileSpec.GIS건물통합식별번호.length == 28
 			&& buildingPolygonFileSpec.고유번호.length == 19
 			&& buildingPolygonFileSpec.법정동코드.length == 10
+			&& buildingPolygonFileSpec.polygon != null
 	}
 
 }

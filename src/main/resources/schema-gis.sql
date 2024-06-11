@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS service.building_polygon;
 CREATE TABLE service.building_polygon
 (
     id            BIGINT AUTO_INCREMENT NOT NULL COMMENT 'PK',
-    `polygon`     MULTIPOLYGON          NOT NULL COMMENT 'polygon',
-    `원천도형ID`      INTEGER               NOT NULL COMMENT '원천도형ID',
+    `polygon`     MULTIPOLYGON    DEFAULT NULL COMMENT 'polygon',
+    `원천도형ID`      INTEGER         DEFAULT NULL COMMENT '원천도형ID',
     `GIS건물통합식별번호` CHAR(28)              NOT NULL COMMENT 'GIS건물통합식별번호',
     `고유번호`        CHAR(19)              NOT NULL COMMENT '고유번호',
     `법정동코드`       CHAR(10)              NOT NULL COMMENT '법정동코드',
@@ -18,7 +18,7 @@ CREATE TABLE service.building_polygon
     `건축물구조명`      VARCHAR(254)    DEFAULT NULL COMMENT '건축물구조명',
     `건축물면적`       DECIMAL(32, 15) DEFAULT NULL COMMENT '건축물면적',
     `사용승인일자`      DATE            DEFAULT NULL COMMENT '사용승인일자',
-    `연면적`         DECIMAL(32, 15)       NOT NULL COMMENT '연면적',
+    `연면적`         DECIMAL(32, 15) DEFAULT NULL COMMENT '연면적',
     `대지면적`        DECIMAL(32, 15) DEFAULT NULL COMMENT '대지면적',
     `높이`          DECIMAL(32, 15) DEFAULT NULL COMMENT '높이',
     `건폐율`         DECIMAL(32, 15) DEFAULT NULL COMMENT '건폐율',

@@ -8,9 +8,9 @@ import java.time.ZoneId
 import java.util.Date
 
 data class BuildingPolygonFileSpec(
-	val polygon: MultiPolygon,
+	val polygon: MultiPolygon?,
 	val 원천도형ID: Int,
-	val GIS건물통합식별번호: String,
+	val GIS건물통합식별번호: String?,
 	val 고유번호: String,
 	val 법정동코드: String,
 	val 법정동명: String,
@@ -23,7 +23,7 @@ data class BuildingPolygonFileSpec(
 	val 건축물구조명: String,
 	val 건축물면적: Double?,
 	val 사용승인일자: String,
-	val 연면적: Double,
+	val 연면적: Double?,
 	val 대지면적: Double?,
 	val 높이: Double?,
 	val 건폐율: Double?,
@@ -42,9 +42,9 @@ data class BuildingPolygonFileSpec(
 	fun toBuildingPolygon(): BuildingPolygon {
 		val wktWriter = WKTWriter()
 		return BuildingPolygon(
-			polygon = wktWriter.write(polygon),
+			polygon = if (polygon != null) wktWriter.write(polygon) else null,
 			원천도형ID = 원천도형ID,
-			GIS건물통합식별번호 = GIS건물통합식별번호.trim(),
+			GIS건물통합식별번호 = GIS건물통합식별번호?.trim()?.ifEmpty { null },
 			고유번호 = 고유번호.trim(),
 			법정동코드 = 법정동코드.trim(),
 			법정동명 = 법정동명.trim().ifEmpty { null },
@@ -57,7 +57,7 @@ data class BuildingPolygonFileSpec(
 			건축물구조명 = 건축물구조명.trim().ifEmpty { null },
 			건축물면적 = if (건축물면적 != null) BigDecimal(건축물면적) else null,
 			사용승인일자 = if (사용승인일자.isNotBlank()) LocalDate.parse(사용승인일자) else null,
-			연면적 = BigDecimal(연면적),
+			연면적 = if (연면적 != null) BigDecimal(연면적) else null,
 			대지면적 = if (대지면적 != null) BigDecimal(대지면적) else null,
 			높이 = if (높이 != null) BigDecimal(높이) else null,
 			건폐율 = if (건폐율 != null) BigDecimal(건폐율) else null,

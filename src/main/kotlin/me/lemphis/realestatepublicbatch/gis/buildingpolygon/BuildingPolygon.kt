@@ -4,9 +4,9 @@ import java.math.BigDecimal
 import java.time.LocalDate
 
 data class BuildingPolygon(
-	val polygon: String,
+	val polygon: String?,
 	val 원천도형ID: Int,
-	val GIS건물통합식별번호: String,
+	val GIS건물통합식별번호: String?,
 	val 고유번호: String,
 	val 법정동코드: String,
 	val 법정동명: String?,
@@ -19,7 +19,7 @@ data class BuildingPolygon(
 	val 건축물구조명: String?,
 	val 건축물면적: BigDecimal?,
 	val 사용승인일자: LocalDate?,
-	val 연면적: BigDecimal,
+	val 연면적: BigDecimal?,
 	val 대지면적: BigDecimal?,
 	val 높이: BigDecimal?,
 	val 건폐율: BigDecimal?,
