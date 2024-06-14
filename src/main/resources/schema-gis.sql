@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS service.building_polygon;
+DROP TABLE IF EXISTS service.land_polygon;
 
 CREATE TABLE service.building_polygon
 (
@@ -36,3 +37,30 @@ CREATE TABLE service.building_polygon
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT = 'GIS건물통합정보';
+
+CREATE TABLE service.land_polygon
+(
+    `고유번호`      CHAR(19)     NOT NULL COMMENT '고유번호',
+    `polygon`   MULTIPOLYGON    DEFAULT NULL COMMENT 'polygon',
+    `법정동코드`     CHAR(10)     NOT NULL COMMENT '법정동코드',
+    `법정동명`      VARCHAR(254) NOT NULL COMMENT '법정동명',
+    `대장구분코드`    CHAR(1)      NOT NULL COMMENT '대장구분코드',
+    `대장구분명`     VARCHAR(20)  NOT NULL COMMENT '대장구분명',
+    `지번`        VARCHAR(10)  NOT NULL COMMENT '지번',
+    `지번지목부호`    VARCHAR(200)    DEFAULT NULL COMMENT '지번지목부호',
+    `기준연도`      CHAR(4)         DEFAULT NULL COMMENT '기준연도',
+    `기준월`       CHAR(2)         DEFAULT NULL COMMENT '기준월',
+    `개별공시지가`    INTEGER         DEFAULT NULL COMMENT '공시지가',
+    `표준지여부`     CHAR(1)         DEFAULT NULL COMMENT '표준지여부',
+    `지목코드`      VARCHAR(2)      DEFAULT NULL COMMENT '지목코드',
+    `지목`        VARCHAR(20)     DEFAULT NULL COMMENT '지목',
+    `토지면적`      DECIMAL(32, 15) DEFAULT NULL COMMENT '토지면적',
+    `데이터기준일자`   DATE         NOT NULL COMMENT '데이터기준일자',
+    `원천시도시군구코드` CHAR(5)      NOT NULL COMMENT '원천시도시군구코드',
+    `과년도1공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도1공시지가',
+    `과년도2공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도2공시지가',
+    `과년도3공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도3공시지가',
+    `과년도4공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도4공시지가',
+    PRIMARY KEY (`고유번호`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT = '개별공시지가공간정보';
