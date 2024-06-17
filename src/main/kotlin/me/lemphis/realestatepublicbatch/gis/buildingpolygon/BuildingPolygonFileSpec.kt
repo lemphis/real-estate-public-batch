@@ -56,7 +56,7 @@ data class BuildingPolygonFileSpec(
 			건축물구조코드 = 건축물구조코드?.ifBlank { null },
 			건축물구조명 = 건축물구조명.ifBlank { null },
 			건축물면적 = if (건축물면적 != null) BigDecimal(건축물면적) else null,
-			사용승인일자 = if (사용승인일자.isNotBlank()) LocalDate.parse(사용승인일자) else null,
+			사용승인일자 = if (사용승인일자.trim().isNotBlank()) LocalDate.parse(사용승인일자) else null,
 			연면적 = if (연면적 != null) BigDecimal(연면적) else null,
 			대지면적 = if (대지면적 != null) BigDecimal(대지면적) else null,
 			높이 = if (높이 != null) BigDecimal(높이) else null,
