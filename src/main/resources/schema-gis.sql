@@ -71,7 +71,7 @@ CREATE TABLE service.legal_polygon
     `polygon`   MULTIPOLYGON NOT NULL COMMENT 'polygon',
     `원천도형ID`    INTEGER      NOT NULL COMMENT '원천도형ID',
     `지역명`       VARCHAR(20) DEFAULT NULL COMMENT '지역명',
-    `데이터기준일자`   VARCHAR(10)  NOT NULL COMMENT '데이터기준일자',
+    `데이터기준일자`   DATE         NOT NULL COMMENT '데이터기준일자',
     `원천시도시군구코드` CHAR(5)      NOT NULL COMMENT '원천시도시군구코드',
     PRIMARY KEY (`법정동코드`)
 ) ENGINE = InnoDB
