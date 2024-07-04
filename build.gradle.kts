@@ -24,6 +24,7 @@ val shapefileVersion = "31.1"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-batch")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("mysql:mysql-connector-java:$mysqlVersion")
 	implementation("org.geotools:gt-shapefile:$shapefileVersion")

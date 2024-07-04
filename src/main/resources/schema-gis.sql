@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS service.building_polygon;
 DROP TABLE IF EXISTS service.land_polygon;
+DROP TABLE IF EXISTS service.legal_polygon;
 
 CREATE TABLE service.building_polygon
 (

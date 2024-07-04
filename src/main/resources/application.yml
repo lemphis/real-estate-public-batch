@@ -1,4 +1,8 @@
 spring:
+  main:
+    web-application-type: NONE
+  config:
+    import: classpath:application-auth.yml
   application:
     name: real-estate-public-batch
   datasource:
