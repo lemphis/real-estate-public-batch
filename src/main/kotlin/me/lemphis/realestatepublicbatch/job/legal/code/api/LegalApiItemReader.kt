@@ -1,4 +1,4 @@
-package me.lemphis.realestatepublicbatch.job.legal
+package me.lemphis.realestatepublicbatch.job.legal.code.api
 
 import me.lemphis.realestatepublicbatch.batch.reader.ApiPagingItemReader
 import me.lemphis.realestatepublicbatch.config.property.ApiKeyProperties
@@ -11,7 +11,7 @@ class LegalApiItemReader(
 	private val apiKeyProperties: ApiKeyProperties,
 ) : ApiPagingItemReader<LegalApiContent>() {
 	override fun doRead(page: Int, pageSize: Int): List<LegalApiContent> {
-		return restClient.get()
+		val response = restClient.get()
 			.uri {
 				it.scheme("https")
 					.host("api.odcloud.kr")
@@ -22,7 +22,7 @@ class LegalApiItemReader(
 					.build()
 			}
 			.retrieve()
-			.body(LegalApiSpec::class.java)
-			?.data ?: throw IllegalStateException()
+			.body(LegalApiSpec::class.java)!!
+		return response.data
 	}
 }

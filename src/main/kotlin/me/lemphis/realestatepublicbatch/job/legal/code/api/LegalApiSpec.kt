@@ -1,4 +1,4 @@
-package me.lemphis.realestatepublicbatch.job.legal
+package me.lemphis.realestatepublicbatch.job.legal.code.api
 
 import java.time.LocalDate
 

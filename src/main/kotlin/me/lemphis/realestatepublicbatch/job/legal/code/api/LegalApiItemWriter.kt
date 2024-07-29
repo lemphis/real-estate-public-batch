@@ -1,4 +1,4 @@
-package me.lemphis.realestatepublicbatch.job.legal
+package me.lemphis.realestatepublicbatch.job.legal.code.api
 
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder
 import org.springframework.context.annotation.Bean
@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration
 import javax.sql.DataSource
 
 @Configuration
-class LegalItemWriter(
+class LegalApiItemWriter(
 	private val dataSource: DataSource,
 ) {
 	val insertQuery = """
-		INSERT INTO service.legal (법정동코드,
+		INSERT INTO service.legal_api (법정동코드,
                            시도명,
                            시군구명,
                            읍면동명,
@@ -39,7 +39,7 @@ class LegalItemWriter(
 	""".trimIndent()
 
 	@Bean
-	fun legalJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
+	fun legalApiJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
 		.dataSource(dataSource)
 		.sql(insertQuery)
 		.beanMapped()

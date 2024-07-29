@@ -10,7 +10,7 @@ class RestClientConfig {
 
 	@Bean
 	fun restClient() = RestClient.builder()
-		.defaultHeaders { it.accept = listOf(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML) }
+		.defaultHeaders { it.accept = listOf(MediaType.APPLICATION_JSON) }
 		.build()
 
 }
