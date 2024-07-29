@@ -7,15 +7,13 @@ import org.springframework.web.client.RestClient
 
 @Component
 class LegalApiItemReader(
-	private val restClient: RestClient,
+	private val odcloudRestClient: RestClient,
 	private val apiKeyProperties: ApiKeyProperties,
 ) : ApiPagingItemReader<LegalApiContent>() {
 	override fun doRead(page: Int, pageSize: Int): List<LegalApiContent> {
-		val response = restClient.get()
+		val response = odcloudRestClient.get()
 			.uri {
-				it.scheme("https")
-					.host("api.odcloud.kr")
-					.path("/api/15063424/v1/uddi:6d7fd177-cc7d-426d-ba80-9b137edf6066")
+				it.path("/api/15063424/v1/uddi:6d7fd177-cc7d-426d-ba80-9b137edf6066")
 					.queryParam("serviceKey", apiKeyProperties.dataGoKr)
 					.queryParam("page", page)
 					.queryParam("perPage", pageSize)

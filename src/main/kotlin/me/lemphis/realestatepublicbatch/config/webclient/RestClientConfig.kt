@@ -9,7 +9,14 @@ import org.springframework.web.client.RestClient
 class RestClientConfig {
 
 	@Bean
-	fun restClient() = RestClient.builder()
+	fun odcloudRestClient() = RestClient.builder()
+		.baseUrl("https://api.odcloud.kr")
+		.defaultHeaders { it.accept = listOf(MediaType.APPLICATION_JSON) }
+		.build()
+
+	@Bean
+	fun dataRestClient() = RestClient.builder()
+		.baseUrl("https://apis.data.go.kr")
 		.defaultHeaders { it.accept = listOf(MediaType.APPLICATION_JSON) }
 		.build()
 
