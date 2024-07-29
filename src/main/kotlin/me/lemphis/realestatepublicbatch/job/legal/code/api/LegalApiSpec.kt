@@ -3,8 +3,8 @@ package me.lemphis.realestatepublicbatch.job.legal.code.api
 import java.time.LocalDate
 
 data class LegalApiSpec(
-	val currentCount: Int,
 	val data: List<LegalApiContent>,
+	val currentCount: Int,
 )
 
 data class LegalApiContent(

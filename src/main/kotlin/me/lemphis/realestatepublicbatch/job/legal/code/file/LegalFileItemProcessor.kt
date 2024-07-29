@@ -17,7 +17,7 @@ class LegalFileItemProcessor : ItemProcessor<LegalFileSpec, Legal> {
 	}
 
 	private fun filterLegal(legal: Legal): Boolean {
-		return legal.isActive == 1
+		return legal.isActive
 	}
 
 }

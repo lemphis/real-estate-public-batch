@@ -8,6 +8,6 @@ data class LegalFileSpec(
 	fun toLegal() = Legal(
 		code = 법정동코드!!,
 		name = 법정동명!!,
-		isActive = if (폐지여부 == "존재") 1 else 0,
+		isActive = 폐지여부 == "존재",
 	)
 }
