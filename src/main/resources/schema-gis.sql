@@ -36,8 +36,7 @@ CREATE TABLE service.building_polygon
     `지하층수`        INTEGER         DEFAULT NULL COMMENT '지하층수',
     `데이터생성변경일자`   DATE            DEFAULT NULL COMMENT '데이터생성변경일자',
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT = 'GIS건물통합정보';
+) ENGINE = InnoDB COMMENT 'GIS건물통합정보';
 
 CREATE TABLE service.land_polygon
 (
@@ -63,8 +62,7 @@ CREATE TABLE service.land_polygon
     `과년도3공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도3공시지가',
     `과년도4공시지가`  INTEGER         DEFAULT NULL COMMENT '과년도4공시지가',
     PRIMARY KEY (`고유번호`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT = '개별공시지가공간정보';
+) ENGINE = InnoDB COMMENT '개별공시지가공간정보';
 
 CREATE TABLE service.legal_polygon
 (
@@ -75,5 +73,4 @@ CREATE TABLE service.legal_polygon
     `데이터기준일자`   DATE         NOT NULL COMMENT '데이터기준일자',
     `원천시도시군구코드` CHAR(5)      NOT NULL COMMENT '원천시도시군구코드',
     PRIMARY KEY (`법정동코드`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT = '법정구역정보';
+) ENGINE = InnoDB COMMENT '법정구역정보';

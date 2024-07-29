@@ -42,8 +42,7 @@ CREATE TABLE service.summary
     `구역코드명`       VARCHAR(100) DEFAULT NULL COMMENT '구역코드명 [VARCHAR(100)]',
     `생성일자`        VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 기본개요';
+) ENGINE = InnoDB COMMENT '건축물대장 기본개요';
 
 CREATE TABLE service.complex
 (
@@ -112,8 +111,7 @@ CREATE TABLE service.complex
     `지능형건축물인증점수` INTEGER        DEFAULT NULL COMMENT '지능형건축물인증점수 [NUMERIC(5)]',
     `생성일자`       VARCHAR(8)     DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 총괄표제부';
+) ENGINE = InnoDB COMMENT '건축물대장 총괄표제부';
 
 CREATE TABLE service.building
 (
@@ -195,8 +193,7 @@ CREATE TABLE service.building
     `내진설계적용여부`   VARCHAR(1)     DEFAULT NULL COMMENT '내진설계적용여부 [VARCHAR(1)]',
     `내진능력`       VARCHAR(200)   DEFAULT NULL COMMENT '내진능력 [VARCHAR(200)]',
     PRIMARY KEY (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 표제부';
+) ENGINE = InnoDB COMMENT '건축물대장 표제부';
 
 CREATE TABLE service.unit
 (
@@ -228,8 +225,7 @@ CREATE TABLE service.unit
     `층번호`       INTEGER      DEFAULT NULL COMMENT '층번호 [NUMERIC(4)]',
     `생성일자`      VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 전유부';
+) ENGINE = InnoDB COMMENT '건축물대장 전유부';
 
 CREATE TABLE service.area
 (
@@ -275,8 +271,7 @@ CREATE TABLE service.area
     `생성일자`      VARCHAR(8)     DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 전유공용면적';
+) ENGINE = InnoDB COMMENT '건축물대장 전유공용면적';
 
 CREATE TABLE service.floor
 (
@@ -316,8 +311,7 @@ CREATE TABLE service.floor
     `생성일자`      VARCHAR(8)     DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 층별개요';
+) ENGINE = InnoDB COMMENT '건축물대장 층별개요';
 
 CREATE TABLE service.sub_land
 (
@@ -357,8 +351,7 @@ CREATE TABLE service.sub_land
     `생성일자`      VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 부속지번';
+) ENGINE = InnoDB COMMENT '건축물대장 부속지번';
 
 CREATE TABLE service.land_regulation
 (
@@ -383,8 +376,7 @@ CREATE TABLE service.land_regulation
     `생성일자`        VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 지역지구구역';
+) ENGINE = InnoDB COMMENT '건축물대장 지역지구구역';
 
 CREATE TABLE service.house_price
 (
@@ -416,8 +408,7 @@ CREATE TABLE service.house_price
     `생성일자`      VARCHAR(8)   DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 주택가격';
+) ENGINE = InnoDB COMMENT '건축물대장 주택가격';
 
 CREATE TABLE service.wastewater_treatment_plant
 (
@@ -453,6 +444,4 @@ CREATE TABLE service.wastewater_treatment_plant
     `생성일자`      VARCHAR(8)     DEFAULT NULL COMMENT '생성일자 [VARCHAR(8)]',
     PRIMARY KEY (`id`),
     INDEX (`관리건축물대장PK`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='건축물대장 오수정화시설';
-
+) ENGINE = InnoDB COMMENT '건축물대장 오수정화시설';

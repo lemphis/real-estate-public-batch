@@ -19,5 +19,4 @@ CREATE TABLE service.land
     `데이터기준일자`   DATE           NOT NULL COMMENT '데이터기준일자',
     `원천시도시군구코드` CHAR(5)        NOT NULL COMMENT '원천시도시군구코드',
     PRIMARY KEY (`고유번호`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4 COMMENT ='토지임야정보';
+) ENGINE = InnoDB COMMENT '토지임야정보';
