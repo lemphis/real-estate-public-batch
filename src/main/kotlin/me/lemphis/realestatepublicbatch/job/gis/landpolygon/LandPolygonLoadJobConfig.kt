@@ -1,6 +1,7 @@
 package me.lemphis.realestatepublicbatch.job.gis.landpolygon
 
 import org.springframework.batch.core.job.builder.JobBuilder
+import org.springframework.batch.core.launch.support.RunIdIncrementer
 import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.item.ItemProcessor
@@ -22,12 +23,13 @@ class LandPolygonLoadJobConfig(
 	private companion object {
 		const val JOB_NAME = "landPolygonLoadJob"
 		const val STEP_NAME = "landPolygonLoadStep"
-		const val CHUNK_SIZE = 2_000
+		const val CHUNK_SIZE = 1_000
 	}
 
 	@Bean
 	fun landPolygonInsertJob() = JobBuilder(JOB_NAME, jobRepository)
 		.start(landPolygonInsertStep())
+		.incrementer(RunIdIncrementer())
 		.build()
 
 	private fun landPolygonInsertStep() = StepBuilder(STEP_NAME, jobRepository)

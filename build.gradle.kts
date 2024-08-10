@@ -21,13 +21,17 @@ repositories {
 
 val mysqlVersion = "8.0.33"
 val shapefileVersion = "31.1"
+val proj4jVersion = "1.3.0"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-batch")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("mysql:mysql-connector-java:$mysqlVersion")
 	implementation("org.geotools:gt-shapefile:$shapefileVersion")
+	implementation("org.locationtech.proj4j:proj4j:$proj4jVersion")
+	implementation("org.locationtech.proj4j:proj4j-epsg:$proj4jVersion")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

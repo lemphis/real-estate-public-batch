@@ -1,5 +1,6 @@
 package me.lemphis.realestatepublicbatch.job.gis.buildingpolygon
 
+import me.lemphis.realestatepublicbatch.batch.util.GisUtils
 import org.locationtech.jts.geom.MultiPolygon
 import org.locationtech.jts.io.WKTWriter
 import java.math.BigDecimal
@@ -41,8 +42,13 @@ data class BuildingPolygonFileSpec(
 ) {
 	fun toBuildingPolygon(): BuildingPolygon {
 		val wktWriter = WKTWriter()
+		var transformedPolygon: String? = null
+		if (polygon != null) {
+			GisUtils.transform(polygon)
+			transformedPolygon = wktWriter.write(polygon)
+		}
 		return BuildingPolygon(
-			polygon = if (polygon != null) wktWriter.write(polygon) else null,
+			polygon = transformedPolygon,
 			원천도형ID = 원천도형ID,
 			GIS건물통합식별번호 = GIS건물통합식별번호?.trim()?.ifEmpty { null },
 			고유번호 = 고유번호.trim(),

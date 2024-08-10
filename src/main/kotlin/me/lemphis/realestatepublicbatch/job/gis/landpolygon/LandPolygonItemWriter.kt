@@ -32,7 +32,7 @@ class LandPolygonItemWriter(
 										 과년도3공시지가,
 										 과년도4공시지가)
 		VALUES (:고유번호,
-				ST_GEOMFROMTEXT(:polygon),
+				ST_GeomFromText(:polygon, 4326),
 				:법정동코드,
 				:법정동명,
 				:대장구분코드,

@@ -22,7 +22,7 @@ class LegalPolygonLoadJobConfig(
 	private companion object {
 		const val JOB_NAME = "legalPolygonLoadJob"
 		const val STEP_NAME = "legalPolygonLoadStep"
-		const val CHUNK_SIZE = 2_000
+		const val CHUNK_SIZE = 1_000
 	}
 
 	@Bean

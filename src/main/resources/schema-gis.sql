@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS service.legal_polygon;
 CREATE TABLE service.building_polygon
 (
     id            BIGINT AUTO_INCREMENT NOT NULL COMMENT 'PK',
-    `polygon`     MULTIPOLYGON    DEFAULT NULL COMMENT 'polygon',
+    `polygon`     MULTIPOLYGON          NOT NULL SRID 4326 COMMENT 'polygon',
     `원천도형ID`      INTEGER         DEFAULT NULL COMMENT '원천도형ID',
     `GIS건물통합식별번호` CHAR(28)              NOT NULL COMMENT 'GIS건물통합식별번호',
     `고유번호`        CHAR(19)              NOT NULL COMMENT '고유번호',
@@ -41,7 +41,7 @@ CREATE TABLE service.building_polygon
 CREATE TABLE service.land_polygon
 (
     `고유번호`      CHAR(19)     NOT NULL COMMENT '고유번호',
-    `polygon`   MULTIPOLYGON    DEFAULT NULL COMMENT 'polygon',
+    `polygon`   MULTIPOLYGON NOT NULL SRID 4326 COMMENT 'polygon',
     `법정동코드`     CHAR(10)     NOT NULL COMMENT '법정동코드',
     `법정동명`      VARCHAR(254) NOT NULL COMMENT '법정동명',
     `대장구분코드`    CHAR(1)      NOT NULL COMMENT '대장구분코드',
@@ -67,7 +67,7 @@ CREATE TABLE service.land_polygon
 CREATE TABLE service.legal_polygon
 (
     `법정동코드`     VARCHAR(10)  NOT NULL COMMENT '법정동코드',
-    `polygon`   MULTIPOLYGON NOT NULL COMMENT 'polygon',
+    `polygon`   MULTIPOLYGON NOT NULL SRID 4326 COMMENT 'polygon',
     `원천도형ID`    INTEGER      NOT NULL COMMENT '원천도형ID',
     `지역명`       VARCHAR(20) DEFAULT NULL COMMENT '지역명',
     `데이터기준일자`   DATE         NOT NULL COMMENT '데이터기준일자',

@@ -17,7 +17,7 @@ class LegalPolygonItemWriter(
 										  데이터기준일자,
 										  원천시도시군구코드)
 		VALUES (:법정동코드,
-				ST_GEOMFROMTEXT(:polygon),
+				ST_GeomFromText(:polygon, 4326),
 				:원천도형ID,
 				:지역명,
 				:데이터기준일자,

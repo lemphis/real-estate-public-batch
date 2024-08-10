@@ -40,7 +40,7 @@ class BuildingPolygonItemWriter(
 											 지상층수,
 											 지하층수,
 											 데이터생성변경일자)
-		VALUES (ST_GEOMFROMTEXT(:polygon),
+		VALUES (ST_GeomFromText(:polygon, 4326),
 				:원천도형ID,
 				:GIS건물통합식별번호,
 				:고유번호,

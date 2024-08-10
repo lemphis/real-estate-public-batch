@@ -22,7 +22,7 @@ class BuildingPolygonLoadJobConfig(
 	private companion object {
 		const val JOB_NAME = "buildingPolygonLoadJob"
 		const val STEP_NAME = "buildingPolygonLoadStep"
-		const val CHUNK_SIZE = 2_000
+		const val CHUNK_SIZE = 1_000
 	}
 
 	@Bean

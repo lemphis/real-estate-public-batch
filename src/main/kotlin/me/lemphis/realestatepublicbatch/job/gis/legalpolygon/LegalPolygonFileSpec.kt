@@ -1,5 +1,6 @@
 package me.lemphis.realestatepublicbatch.job.gis.legalpolygon
 
+import me.lemphis.realestatepublicbatch.batch.util.GisUtils
 import org.locationtech.jts.geom.MultiPolygon
 import org.locationtech.jts.io.WKTWriter
 import java.time.ZoneId
@@ -14,10 +15,12 @@ data class LegalPolygonFileSpec(
 	val 원천시도시군구코드: String,
 ) {
 	fun toLegalPolygon(): LegalPolygon {
+		GisUtils.transform(polygon)
 		val wktWriter = WKTWriter()
+		val transformedPolygon = wktWriter.write(polygon)
 		return LegalPolygon(
 			법정동코드 = 법정동코드.trim(),
-			polygon = wktWriter.write(polygon),
+			polygon = transformedPolygon,
 			원천도형ID = 원천도형ID,
 			지역명 = 지역명?.trim()?.ifEmpty { null },
 			데이터기준일자 = 데이터기준일자.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
