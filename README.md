@@ -46,6 +46,7 @@
   - 지역지구구역 (land_regulation)
   - 주택가격 (house_price)
   - 오수정화시설 (wastewater_treatment_plant)
+  - 소유자구분정보 (owner)
 - 토지 (land)
   - 토지임야대장
 - GIS (gis)

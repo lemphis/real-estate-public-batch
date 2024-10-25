@@ -1,0 +1,36 @@
+package me.lemphis.realestatepublicbatch.job.buildingregister.owner
+
+import java.math.BigDecimal
+
+data class Owner(
+	val 관리건축물대장PK: String,
+	val 시군구코드: String? = null,
+	val 시군구명: String? = null,
+	val 법정동코드: String? = null,
+	val 법정동명: String? = null,
+	val 대지구분코드: String? = null,
+	val 대지구분명: String? = null,
+	val 번: String? = null,
+	val 지: String? = null,
+	val 특수지명: String? = null,
+	val 블록: String? = null,
+	val 로트: String? = null,
+	val 새주소대지위치: String? = null,
+	val 새주소도로코드: String? = null,
+	val 새주소법정동코드: String? = null,
+	val 새주소지상지하코드: String? = null,
+	val 새주소지상지하명: String? = null,
+	val 새주소본번: String? = null,
+	val 새주소부번: String? = null,
+	val 대장구분코드: String? = null,
+	val 대장구분명: String? = null,
+	val 대장종류코드: String? = null,
+	val 대장종류명: String? = null,
+	val 건물명: String? = null,
+	val 동명칭: String? = null,
+	val 호명칭: String? = null,
+	val 면적: BigDecimal? = null,
+	val 소유구분코드: String? = null,
+	val 소유구분명: String? = null,
+	val 변동원인일: String? = null,
+)
