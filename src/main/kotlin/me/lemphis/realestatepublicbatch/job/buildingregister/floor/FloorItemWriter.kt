@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class FloorItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.floor (관리건축물대장PK,
                            대지위치,
                            도로명대지위치,
@@ -110,11 +110,11 @@ class FloorItemWriter(
 								생성일자      = VALUES(생성일자)
 	""".trimIndent()
 
-	@Bean
-	fun floorJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Floor>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun floorJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Floor>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

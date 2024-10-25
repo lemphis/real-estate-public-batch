@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class SubLandItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.sub_land (관리건축물대장PK,
                               대장구분코드,
                               대장구분코드명,
@@ -110,11 +110,11 @@ class SubLandItemWriter(
 								생성일자      = VALUES(생성일자)
 	""".trimIndent()
 
-	@Bean
-	fun subLandJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<SubLand>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun subLandJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<SubLand>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

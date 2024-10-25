@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class SummaryItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.summary (관리건축물대장PK,
                              관리상위건축물대장PK,
                              대장구분코드,
@@ -101,11 +101,11 @@ class SummaryItemWriter(
 								생성일자        = VALUES(생성일자)
 	""".trimIndent()
 
-	@Bean
-	fun summaryJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Summary>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun summaryJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Summary>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

@@ -12,30 +12,30 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class LegalPolygonLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val legalPolygonMultiFileItemReader: ItemReader<LegalPolygonFileSpec>,
-	private val legalPolygonItemProcessor: ItemProcessor<LegalPolygonFileSpec, LegalPolygon>,
-	private val legalPolygonJdbcBatchItemWriter: ItemWriter<LegalPolygon>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val legalPolygonMultiFileItemReader: ItemReader<LegalPolygonFileSpec>,
+    private val legalPolygonItemProcessor: ItemProcessor<LegalPolygonFileSpec, LegalPolygon>,
+    private val legalPolygonJdbcBatchItemWriter: ItemWriter<LegalPolygon>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "legalPolygonLoadJob"
-		const val STEP_NAME = "legalPolygonLoadStep"
-		const val CHUNK_SIZE = 1_000
-	}
+    private companion object {
+        const val JOB_NAME = "legalPolygonLoadJob"
+        const val STEP_NAME = "legalPolygonLoadStep"
+        const val CHUNK_SIZE = 1_000
+    }
 
-	@Bean
-	fun legalPolygonInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.start(legalPolygonInsertStep())
-		.build()
+    @Bean
+    fun legalPolygonInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .start(legalPolygonInsertStep())
+        .build()
 
-	private fun legalPolygonInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<LegalPolygonFileSpec, LegalPolygon>(CHUNK_SIZE, transactionManager)
-		.reader(legalPolygonMultiFileItemReader)
-		.processor(legalPolygonItemProcessor)
-		.writer(legalPolygonJdbcBatchItemWriter)
-		.build()
+    private fun legalPolygonInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<LegalPolygonFileSpec, LegalPolygon>(CHUNK_SIZE, transactionManager)
+        .reader(legalPolygonMultiFileItemReader)
+        .processor(legalPolygonItemProcessor)
+        .writer(legalPolygonJdbcBatchItemWriter)
+        .build()
 
 }
 

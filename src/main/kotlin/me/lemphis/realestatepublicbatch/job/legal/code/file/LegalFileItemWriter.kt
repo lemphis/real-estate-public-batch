@@ -9,9 +9,9 @@ import javax.sql.DataSource
 
 @Component
 class LegalFileItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.legal_file (code,
 										name,
 										is_active)
@@ -22,21 +22,21 @@ class LegalFileItemWriter(
 								is_active = VALUES(is_active)
 	""".trimIndent()
 
-	@Bean
-	fun legalFileJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.columnMapped()
-		.itemSqlParameterSourceProvider(itemSqlParameterSourceProvider())
-		.build()
+    @Bean
+    fun legalFileJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .columnMapped()
+        .itemSqlParameterSourceProvider(itemSqlParameterSourceProvider())
+        .build()
 
-	private fun itemSqlParameterSourceProvider() = ItemSqlParameterSourceProvider<Legal> { item ->
-		val paramMap = mapOf(
-			"code" to item.code,
-			"name" to item.name,
-			"isActive" to item.isActive,
-		)
-		MapSqlParameterSource(paramMap)
-	}
+    private fun itemSqlParameterSourceProvider() = ItemSqlParameterSourceProvider<Legal> { item ->
+        val paramMap = mapOf(
+            "code" to item.code,
+            "name" to item.name,
+            "isActive" to item.isActive,
+        )
+        MapSqlParameterSource(paramMap)
+    }
 
 }

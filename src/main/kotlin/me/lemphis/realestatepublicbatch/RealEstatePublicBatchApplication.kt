@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class RealEstatePublicBatchApplication
 
 fun main(args: Array<String>) {
-	runApplication<RealEstatePublicBatchApplication>(*args)
+    runApplication<RealEstatePublicBatchApplication>(*args)
 }

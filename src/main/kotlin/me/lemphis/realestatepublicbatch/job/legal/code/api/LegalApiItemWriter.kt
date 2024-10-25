@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Configuration
 class LegalApiItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.legal_api (법정동코드,
                            시도명,
                            시군구명,
@@ -38,11 +38,11 @@ class LegalApiItemWriter(
 								과거법정동코드 = VALUES(과거법정동코드)
 	""".trimIndent()
 
-	@Bean
-	fun legalApiJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun legalApiJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Legal>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

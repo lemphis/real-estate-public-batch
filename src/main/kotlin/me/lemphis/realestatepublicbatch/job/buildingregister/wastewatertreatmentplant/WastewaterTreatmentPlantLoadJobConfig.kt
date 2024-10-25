@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class WastewaterTreatmentPlantLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val wastewaterTreatmentPlantFlatFileItemReader: ItemReader<WastewaterTreatmentPlantFileSpec>,
-	private val wastewaterTreatmentPlantItemProcessor: ItemProcessor<WastewaterTreatmentPlantFileSpec, WastewaterTreatmentPlant>,
-	private val wastewaterTreatmentPlantJdbcBatchItemWriter: ItemWriter<WastewaterTreatmentPlant>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val wastewaterTreatmentPlantFlatFileItemReader: ItemReader<WastewaterTreatmentPlantFileSpec>,
+    private val wastewaterTreatmentPlantItemProcessor: ItemProcessor<WastewaterTreatmentPlantFileSpec, WastewaterTreatmentPlant>,
+    private val wastewaterTreatmentPlantJdbcBatchItemWriter: ItemWriter<WastewaterTreatmentPlant>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "wastewaterTreatmentPlantLoadJob"
-		const val STEP_NAME = "wastewaterTreatmentPlantLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "wastewaterTreatmentPlantLoadJob"
+        const val STEP_NAME = "wastewaterTreatmentPlantLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun wastewaterTreatmentPlantInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(wastewaterTreatmentPlantInsertStep())
-		.build()
+    @Bean
+    fun wastewaterTreatmentPlantInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(wastewaterTreatmentPlantInsertStep())
+        .build()
 
-	private fun wastewaterTreatmentPlantInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<WastewaterTreatmentPlantFileSpec, WastewaterTreatmentPlant>(CHUNK_SIZE, transactionManager)
-		.reader(wastewaterTreatmentPlantFlatFileItemReader)
-		.processor(wastewaterTreatmentPlantItemProcessor)
-		.writer(wastewaterTreatmentPlantJdbcBatchItemWriter)
-		.build()
+    private fun wastewaterTreatmentPlantInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<WastewaterTreatmentPlantFileSpec, WastewaterTreatmentPlant>(CHUNK_SIZE, transactionManager)
+        .reader(wastewaterTreatmentPlantFlatFileItemReader)
+        .processor(wastewaterTreatmentPlantItemProcessor)
+        .writer(wastewaterTreatmentPlantJdbcBatchItemWriter)
+        .build()
 
 }
 

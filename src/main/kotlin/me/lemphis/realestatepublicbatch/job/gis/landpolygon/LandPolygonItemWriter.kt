@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class LandPolygonItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.land_polygon(고유번호,
 										 polygon,
 										 법정동코드,
@@ -75,11 +75,11 @@ class LandPolygonItemWriter(
 								과년도4공시지가  = VALUES(과년도4공시지가)
 	""".trimIndent()
 
-	@Bean
-	fun landPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<LandPolygon>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun landPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<LandPolygon>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

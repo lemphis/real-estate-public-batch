@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class LandRegulationLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val landRegulationFlatFileItemReader: ItemReader<LandRegulationFileSpec>,
-	private val landRegulationItemProcessor: ItemProcessor<LandRegulationFileSpec, LandRegulation>,
-	private val landRegulationJdbcBatchItemWriter: ItemWriter<LandRegulation>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val landRegulationFlatFileItemReader: ItemReader<LandRegulationFileSpec>,
+    private val landRegulationItemProcessor: ItemProcessor<LandRegulationFileSpec, LandRegulation>,
+    private val landRegulationJdbcBatchItemWriter: ItemWriter<LandRegulation>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "landRegulationLoadJob"
-		const val STEP_NAME = "landRegulationLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "landRegulationLoadJob"
+        const val STEP_NAME = "landRegulationLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun landRegulationInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(landRegulationInsertStep())
-		.build()
+    @Bean
+    fun landRegulationInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(landRegulationInsertStep())
+        .build()
 
-	private fun landRegulationInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<LandRegulationFileSpec, LandRegulation>(CHUNK_SIZE, transactionManager)
-		.reader(landRegulationFlatFileItemReader)
-		.processor(landRegulationItemProcessor)
-		.writer(landRegulationJdbcBatchItemWriter)
-		.build()
+    private fun landRegulationInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<LandRegulationFileSpec, LandRegulation>(CHUNK_SIZE, transactionManager)
+        .reader(landRegulationFlatFileItemReader)
+        .processor(landRegulationItemProcessor)
+        .writer(landRegulationJdbcBatchItemWriter)
+        .build()
 
 }
 

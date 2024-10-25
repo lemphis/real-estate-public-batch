@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class HousePriceLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val housePriceFlatFileItemReader: ItemReader<HousePriceFileSpec>,
-	private val housePriceItemProcessor: ItemProcessor<HousePriceFileSpec, HousePrice>,
-	private val housePriceJdbcBatchItemWriter: ItemWriter<HousePrice>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val housePriceFlatFileItemReader: ItemReader<HousePriceFileSpec>,
+    private val housePriceItemProcessor: ItemProcessor<HousePriceFileSpec, HousePrice>,
+    private val housePriceJdbcBatchItemWriter: ItemWriter<HousePrice>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "housePriceLoadJob"
-		const val STEP_NAME = "housePriceLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "housePriceLoadJob"
+        const val STEP_NAME = "housePriceLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun housePriceInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(housePriceInsertStep())
-		.build()
+    @Bean
+    fun housePriceInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(housePriceInsertStep())
+        .build()
 
-	private fun housePriceInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<HousePriceFileSpec, HousePrice>(CHUNK_SIZE, transactionManager)
-		.reader(housePriceFlatFileItemReader)
-		.processor(housePriceItemProcessor)
-		.writer(housePriceJdbcBatchItemWriter)
-		.build()
+    private fun housePriceInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<HousePriceFileSpec, HousePrice>(CHUNK_SIZE, transactionManager)
+        .reader(housePriceFlatFileItemReader)
+        .processor(housePriceItemProcessor)
+        .writer(housePriceJdbcBatchItemWriter)
+        .build()
 
 }
 

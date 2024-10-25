@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class ComplexItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.complex (관리건축물대장PK,
                              대장구분코드,
                              대장구분코드명,
@@ -203,11 +203,11 @@ class ComplexItemWriter(
 								생성일자       = VALUES(생성일자)
 	""".trimIndent()
 
-	@Bean
-	fun complexJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Complex>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun complexJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Complex>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

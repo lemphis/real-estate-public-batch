@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class OwnerItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.owner (관리건축물대장PK,
 								   시군구코드,
 								   시군구명,
@@ -101,11 +101,11 @@ class OwnerItemWriter(
 								변동원인일     = VALUES(변동원인일)
 	""".trimIndent()
 
-	@Bean
-	fun ownerJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Owner>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun ownerJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<Owner>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class BuildingPolygonItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.building_polygon(polygon,
 											 원천도형ID,
 											 GIS건물통합식별번호,
@@ -102,11 +102,11 @@ class BuildingPolygonItemWriter(
 								데이터생성변경일자   = VALUES(데이터생성변경일자)
 	""".trimIndent()
 
-	@Bean
-	fun buildingPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<BuildingPolygon>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun buildingPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<BuildingPolygon>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }

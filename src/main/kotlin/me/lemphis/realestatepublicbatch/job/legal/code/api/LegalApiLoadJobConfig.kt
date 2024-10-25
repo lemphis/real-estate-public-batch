@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class LegalApiLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val legalApiItemReader: ItemReader<LegalApiContent>,
-	private val legalApiItemProcessor: ItemProcessor<LegalApiContent, Legal>,
-	private val legalApiJdbcBatchItemWriter: ItemWriter<Legal>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val legalApiItemReader: ItemReader<LegalApiContent>,
+    private val legalApiItemProcessor: ItemProcessor<LegalApiContent, Legal>,
+    private val legalApiJdbcBatchItemWriter: ItemWriter<Legal>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "legalApiLoadJob"
-		const val STEP_NAME = "legalApiLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "legalApiLoadJob"
+        const val STEP_NAME = "legalApiLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun legalApiInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(legalInsertStep())
-		.build()
+    @Bean
+    fun legalApiInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(legalInsertStep())
+        .build()
 
-	private fun legalInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<LegalApiContent, Legal>(CHUNK_SIZE, transactionManager)
-		.reader(legalApiItemReader)
-		.processor(legalApiItemProcessor)
-		.writer(legalApiJdbcBatchItemWriter)
-		.build()
+    private fun legalInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<LegalApiContent, Legal>(CHUNK_SIZE, transactionManager)
+        .reader(legalApiItemReader)
+        .processor(legalApiItemProcessor)
+        .writer(legalApiJdbcBatchItemWriter)
+        .build()
 
 }
 

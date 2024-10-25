@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class LegalApiItemProcessor : ItemProcessor<LegalApiContent, Legal> {
 
-	override fun process(legalApiContent: LegalApiContent): Legal? {
-		return if (validateLegal(legalApiContent)) legalApiContent.toLegal() else null
-	}
+    override fun process(legalApiContent: LegalApiContent): Legal? {
+        return if (validateLegal(legalApiContent)) legalApiContent.toLegal() else null
+    }
 
-	private fun validateLegal(legalApiContent: LegalApiContent): Boolean {
-		return true
-	}
+    private fun validateLegal(legalApiContent: LegalApiContent): Boolean {
+        return true
+    }
 
 }

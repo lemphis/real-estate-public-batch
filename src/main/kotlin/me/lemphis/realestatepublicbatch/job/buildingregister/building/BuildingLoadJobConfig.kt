@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class BuildingLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val buildingFlatFileItemReader: ItemReader<BuildingFileSpec>,
-	private val buildingItemProcessor: ItemProcessor<BuildingFileSpec, Building>,
-	private val buildingJdbcBatchItemWriter: ItemWriter<Building>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val buildingFlatFileItemReader: ItemReader<BuildingFileSpec>,
+    private val buildingItemProcessor: ItemProcessor<BuildingFileSpec, Building>,
+    private val buildingJdbcBatchItemWriter: ItemWriter<Building>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "buildingLoadJob"
-		const val STEP_NAME = "buildingLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "buildingLoadJob"
+        const val STEP_NAME = "buildingLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun buildingInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(buildingInsertStep())
-		.build()
+    @Bean
+    fun buildingInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(buildingInsertStep())
+        .build()
 
-	private fun buildingInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<BuildingFileSpec, Building>(CHUNK_SIZE, transactionManager)
-		.reader(buildingFlatFileItemReader)
-		.processor(buildingItemProcessor)
-		.writer(buildingJdbcBatchItemWriter)
-		.build()
+    private fun buildingInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<BuildingFileSpec, Building>(CHUNK_SIZE, transactionManager)
+        .reader(buildingFlatFileItemReader)
+        .processor(buildingItemProcessor)
+        .writer(buildingJdbcBatchItemWriter)
+        .build()
 
 }
 

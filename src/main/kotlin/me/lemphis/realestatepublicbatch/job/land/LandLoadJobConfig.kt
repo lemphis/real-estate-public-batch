@@ -13,31 +13,31 @@ import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
 class LandLoadJobConfig(
-	private val transactionManager: PlatformTransactionManager,
-	private val jobRepository: JobRepository,
-	private val landMultiFileItemReader: ItemReader<LandFileSpec>,
-	private val landItemProcessor: ItemProcessor<LandFileSpec, Land>,
-	private val landJdbcBatchItemWriter: ItemWriter<Land>,
+    private val transactionManager: PlatformTransactionManager,
+    private val jobRepository: JobRepository,
+    private val landMultiFileItemReader: ItemReader<LandFileSpec>,
+    private val landItemProcessor: ItemProcessor<LandFileSpec, Land>,
+    private val landJdbcBatchItemWriter: ItemWriter<Land>,
 ) {
 
-	private companion object {
-		const val JOB_NAME = "landLoadJob"
-		const val STEP_NAME = "landLoadStep"
-		const val CHUNK_SIZE = 2_000
-	}
+    private companion object {
+        const val JOB_NAME = "landLoadJob"
+        const val STEP_NAME = "landLoadStep"
+        const val CHUNK_SIZE = 2_000
+    }
 
-	@Bean
-	fun landInsertJob() = JobBuilder(JOB_NAME, jobRepository)
-		.incrementer(RunIdIncrementer())
-		.start(landInsertStep())
-		.build()
+    @Bean
+    fun landInsertJob() = JobBuilder(JOB_NAME, jobRepository)
+        .incrementer(RunIdIncrementer())
+        .start(landInsertStep())
+        .build()
 
-	private fun landInsertStep() = StepBuilder(STEP_NAME, jobRepository)
-		.chunk<LandFileSpec, Land>(CHUNK_SIZE, transactionManager)
-		.reader(landMultiFileItemReader)
-		.processor(landItemProcessor)
-		.writer(landJdbcBatchItemWriter)
-		.build()
+    private fun landInsertStep() = StepBuilder(STEP_NAME, jobRepository)
+        .chunk<LandFileSpec, Land>(CHUNK_SIZE, transactionManager)
+        .reader(landMultiFileItemReader)
+        .processor(landItemProcessor)
+        .writer(landJdbcBatchItemWriter)
+        .build()
 
 }
 

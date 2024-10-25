@@ -7,9 +7,9 @@ import javax.sql.DataSource
 
 @Component
 class LegalPolygonItemWriter(
-	private val dataSource: DataSource,
+    private val dataSource: DataSource,
 ) {
-	val insertQuery = """
+    val insertQuery = """
 		INSERT INTO service.legal_polygon(법정동코드,
 										  polygon,
 										  원천도형ID,
@@ -29,11 +29,11 @@ class LegalPolygonItemWriter(
 								원천시도시군구코드 = VALUES(원천시도시군구코드)
 	""".trimIndent()
 
-	@Bean
-	fun legalPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<LegalPolygon>()
-		.dataSource(dataSource)
-		.sql(insertQuery)
-		.beanMapped()
-		.build()
+    @Bean
+    fun legalPolygonJdbcBatchItemWriter() = JdbcBatchItemWriterBuilder<LegalPolygon>()
+        .dataSource(dataSource)
+        .sql(insertQuery)
+        .beanMapped()
+        .build()
 
 }
